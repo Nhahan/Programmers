@@ -1,6 +1,6 @@
 def solution(s):
     for i in range(len(s)):
-        if s[i].isdigit() == False:
+        if not s[i].isdigit():
             answer = False
             break
         elif len(s) == 4 or len(s) == 6:

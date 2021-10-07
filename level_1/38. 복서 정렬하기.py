@@ -4,26 +4,26 @@ def win_rate(win, lose):
 
 def solution(weights, head2head):
     weights_dict = {}
-    for idx, weight in enumerate(weights):
-        if weight not in weights_dict.keys():
-            # 승리, 패배, 승률, 무거운 복서 이긴 횟수, 선수 번호
-            weights_dict[weight] = [0, 0]
-            weights_dict[weight].append(win_rate(weights_dict[weight][0], weights_dict[weight][1]))
-            weights_dict[weight].append(0)
-            weights_dict[weight].append(idx + 1)
-        for i, head in enumerate(head2head):
-            print(head)
-            for h in head:
-
-                if h == "W":  # 이겼을 떄
-                    weights_dict[weight][0] += 1
-                    print(weight, weights[i])
-                    if weight < weights[i]:  # 상대보다 가벼우면
-                        weights_dict[weight][3] += 1
-                elif h == "L":  # 졌을 떄
-                    weights_dict[weight][1] += 1
-
-    print(weights_dict)
+    for idx, weight in enumerate(weights):  # [50, 82, 75, 120]
+        if (weight, idx) not in weights_dict.keys():
+            # 승리, 패배, 무거운 복서 이긴 횟수
+            weights_dict[(weight, idx)] = [0, 0, 0]
+        for i, heads in enumerate(head2head):  # ["NLWL", "WNLL", "LWNW", "WWLN"]
+            for j, head in enumerate(heads):  # NLWL
+                if idx != i:
+                    break
+                if head == "W":  # 이겼다면
+                    weights_dict[(weight, idx)][0] += 1
+                    if weights[j] > weight:  # 상대방의 몸무게가 무겁다면
+                        weights_dict[(weight, idx)][2] += 1
+                elif head == "L":  # 졌다면
+                    weights_dict[(weight, idx)][1] += 1
+    answer_list = []
+    for i, key in enumerate(weights_dict.keys()):
+        answer_list.append(weights_dict[key])
+        answer_list[i].append(key[0])
+        answer_list[i].append(key[1])
+    print(answer_list)
 
 
 solution([50, 82, 75, 120], ["NLWL", "WNLL", "LWNW", "WWLN"])

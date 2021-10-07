@@ -23,6 +23,9 @@ def solution(weights, head2head):
         answer_list.append(weights_dict[key])
         answer_list[i].append(key[0])
         answer_list[i].append(key[1])
+    # < list >.sort(key= < function >, reverse = < bool >)
+    print(answer_list)
+    answer_list.sort(key=lambda answer: answer[3])
     print(answer_list)
 
 

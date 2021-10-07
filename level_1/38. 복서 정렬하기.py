@@ -21,7 +21,7 @@ def solution(weights, head2head):
     answer_list = []
     for i, key in enumerate(weights_dict.keys()):
         answer_list.append(weights_dict[key])
-        answer_list.append(int(answer_list[i][0] / (answer_list[i][0] + answer_list[i][1])*100))
+        answer_list[i].append(int(answer_list[i][0] / (answer_list[i][0] + answer_list[i][1])*100))
         answer_list[i].append(key[0])
         answer_list[i].append(key[1])
 

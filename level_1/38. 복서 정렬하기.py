@@ -21,14 +21,16 @@ def solution(weights, head2head):
     answer_list = []
     for i, key in enumerate(weights_dict.keys()):
         answer_list.append(weights_dict[key])
-        answer_list[i].append(int(answer_list[i][0] / (answer_list[i][0] + answer_list[i][1])*100))
+        tmp = int(answer_list[i][0] * 100000000 / (answer_list[i][0] + answer_list[i][1])) if (answer_list[i][0] +
+                                                                                         answer_list[i][1]) != 0 else 0
+        answer_list[i].append(tmp)
         answer_list[i].append(key[0])
-        answer_list[i].append(key[1])
+        answer_list[i].append(key[1] + 1)
 
-    print(answer_list)
-    answer_list.sort(key=lambda answer: answer[2])
-    answer_list.sort(key=lambda answer: answer[4])
-    answer_list.sort(key=lambda answer: answer[0] / (answer[0] + answer[1]))
+    answer_list.sort(key=lambda a: (-a[3], -a[2], -a[4], a[5]))
+    return [i[5] for i in answer_list]
 
 
-solution([50, 82, 75, 120], ["NLWL", "WNLL", "LWNW", "WWLN"])
+print(solution([145, 92, 86], ["NLW", "WNL", "LWN"]))
+print(solution([50, 82, 75, 120], ["NLWL", "WNLL", "LWNW", "WWLN"]))
+print(solution([60, 70, 60], ["NNN", "NNN", "NNN"]))

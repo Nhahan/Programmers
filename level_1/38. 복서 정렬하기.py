@@ -22,7 +22,8 @@ def solution(weights, head2head):
     for i, key in enumerate(weights_dict.keys()):
         answer_list.append(weights_dict[key])
         tmp = int(answer_list[i][0] * 100000000 / (answer_list[i][0] + answer_list[i][1])) if (answer_list[i][0] +
-                                                                                         answer_list[i][1]) != 0 else 0
+                                                                                               answer_list[i][
+                                                                                                   1]) != 0 else 0
         answer_list[i].append(tmp)
         answer_list[i].append(key[0])
         answer_list[i].append(key[1] + 1)

@@ -7,7 +7,7 @@ def co(arr, last_hand, number):
 
 
 def solution(numbers, hand):
-    arr = [[0] * 3 for i in range(4)]
+    arr = [[0] * 3 for _ in range(4)]
     num = []
     answer = ""
     answers = []

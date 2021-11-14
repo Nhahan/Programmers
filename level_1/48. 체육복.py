@@ -6,9 +6,16 @@ def solution(n, lost, reserve):
             reserve.remove(i)
             lost.remove(i - 1)
             students.append(i - 1)
+        elif i in lost:
+            reserve.remove(i)
+            lost.remove(i)
+            students.remove(i)
         elif i + 1 in lost:
             reserve.remove(i)
             lost.remove(i + 1)
             students.append(i + 1)
 
     return len(students)
+
+
+print(solution(5, [2, 4], [1, 3, 5]))

@@ -1,6 +1,9 @@
 def solution(n, lost, reserve):
     answer = n - len(lost)
     left = [i for i in range(1, n + 1)]
+    left.sort()
+    reserve.sort()
+
     for i in reserve:
         left.append(i)
     for i in lost:

@@ -3,8 +3,9 @@ from itertools import combinations
 
 
 def solution(nums):
-    primes = is_prime_num(max(nums))
-    combs = set([sum(i) for i in combinations(nums, 3) if sum(i) in is_prime_num(max(nums))])
+    possible_list = [sum(i) for i in combinations(nums, 3)]
+    primes = is_prime_num(max(possible_list))
+    combs = set([i for i in possible_list if i in primes])
     return len(combs)
 
 
@@ -21,6 +22,4 @@ def is_prime_num(n):
                 arr[i * j] = False
                 j += 1
 
-    return [i for i in range(len(arr)) if arr[i] == True]
-
-print(solution([1,2,7,6,4]))
+    return [i for i in range(len(arr)) if arr[i] is True]

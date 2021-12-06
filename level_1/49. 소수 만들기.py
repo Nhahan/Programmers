@@ -4,8 +4,9 @@ from itertools import combinations
 
 def solution(nums):
     possible_list = [sum(i) for i in combinations(nums, 3)]
+    print(possible_list)
     primes = is_prime_num(max(possible_list))
-    combs = set([i for i in possible_list if i in primes])
+    combs = ([i for i in possible_list if i in primes])
     return len(combs)
 
 
